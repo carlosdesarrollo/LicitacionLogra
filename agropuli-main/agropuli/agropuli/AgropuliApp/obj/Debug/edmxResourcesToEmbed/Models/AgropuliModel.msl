@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgropuliModelStoreContainer" CdmEntityContainer="AgropuliEntities">
+    <EntitySetMapping Name="OrderProduct">
+      <EntityTypeMapping TypeName="AgropuliModel.OrderProduct">
+        <MappingFragment StoreEntitySet="OrderProduct">
+          <ScalarProperty Name="SubTotalPrice" ColumnName="SubTotalPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderReference" ColumnName="OrderReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="AgropuliModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="AgropuliModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="AgropuliModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="AgropuliModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TypeMod" ColumnName="TypeMod" />
+          <ScalarProperty Name="PayuPaymentType" ColumnName="PayuPaymentType" />
+          <ScalarProperty Name="PayuPaymentMethod" ColumnName="PayuPaymentMethod" />
+          <ScalarProperty Name="PayuTransaction" ColumnName="PayuTransaction" />
+          <ScalarProperty Name="PayuReference" ColumnName="PayuReference" />
+          <ScalarProperty Name="PayuResponseCode" ColumnName="PayuResponseCode" />
+          <ScalarProperty Name="PayuState" ColumnName="PayuState" />
+          <ScalarProperty Name="PaymentDateTime" ColumnName="PaymentDateTime" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="AgropuliModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Referral">
+      <EntityTypeMapping TypeName="AgropuliModel.Referral">
+        <MappingFragment StoreEntitySet="Referral">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favor">
+      <EntityTypeMapping TypeName="AgropuliModel.Favor">
+        <MappingFragment StoreEntitySet="Favor">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="AgropuliModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+          <ScalarProperty Name="DepartamentoId" ColumnName="DepartamentoId" />
+          <ScalarProperty Name="TypeSubProveedorId" ColumnName="TypeSubProveedorId" />
+          <ScalarProperty Name="TypeProveedorId" ColumnName="TypeProveedorId" />
+          <ScalarProperty Name="CedulaRef" ColumnName="CedulaRef" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Crop" ColumnName="Crop" />
+          <ScalarProperty Name="Farm" ColumnName="Farm" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Vereda" ColumnName="Vereda" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crop">
+      <EntityTypeMapping TypeName="AgropuliModel.Crop">
+        <MappingFragment StoreEntitySet="Crop">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job">
+      <EntityTypeMapping TypeName="AgropuliModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pest">
+      <EntityTypeMapping TypeName="AgropuliModel.Pest">
+        <MappingFragment StoreEntitySet="Pest">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle">
+      <EntityTypeMapping TypeName="AgropuliModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkWithUs">
+      <EntityTypeMapping TypeName="AgropuliModel.WorkWithUs">
+        <MappingFragment StoreEntitySet="WorkWithUs">
+          <ScalarProperty Name="IsTechnician" ColumnName="IsTechnician" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointment">
+      <EntityTypeMapping TypeName="AgropuliModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="NextAppointment" ColumnName="NextAppointment" />
+          <ScalarProperty Name="AssignTechnician" ColumnName="AssignTechnician" />
+          <ScalarProperty Name="RequestAppointment" ColumnName="RequestAppointment" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="SecondaryCrop" ColumnName="SecondaryCrop" />
+          <ScalarProperty Name="CallDate" ColumnName="CallDate" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Quote" ColumnName="Quote" />
+          <ScalarProperty Name="Ha" ColumnName="Ha" />
+          <ScalarProperty Name="Variety" ColumnName="Variety" />
+          <ScalarProperty Name="Crop" ColumnName="Crop" />
+          <ScalarProperty Name="Administrator" ColumnName="Administrator" />
+          <ScalarProperty Name="GPS" ColumnName="GPS" />
+          <ScalarProperty Name="Farm" ColumnName="Farm" />
+          <ScalarProperty Name="Vereda" ColumnName="Vereda" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCompras">
+      <EntityTypeMapping TypeName="AgropuliModel.ServiceCompras">
+        <MappingFragment StoreEntitySet="ServiceCompras">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="ServicioId" ColumnName="ServicioId" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="AgropuliModel.Comentarios">
+        <MappingFragment StoreEntitySet="Comentarios">
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceCategory">
+      <EntityTypeMapping TypeName="AgropuliModel.ServiceCategory">
+        <MappingFragment StoreEntitySet="ServiceCategory">
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="AgropuliModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeClient">
+      <EntityTypeMapping TypeName="AgropuliModel.TypeClient">
+        <MappingFragment StoreEntitySet="TypeClient">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeProveedor">
+      <EntityTypeMapping TypeName="AgropuliModel.TypeProveedor">
+        <MappingFragment StoreEntitySet="TypeProveedor">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeSubProveedor">
+      <EntityTypeMapping TypeName="AgropuliModel.TypeSubProveedor">
+        <MappingFragment StoreEntitySet="TypeSubProveedor">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudad">
+      <EntityTypeMapping TypeName="AgropuliModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departmento">
+      <EntityTypeMapping TypeName="AgropuliModel.Departmento">
+        <MappingFragment StoreEntitySet="Departmento">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuNivelRef">
+      <EntityTypeMapping TypeName="AgropuliModel.UsuNivelRef">
+        <MappingFragment StoreEntitySet="UsuNivelRef">
+          <ScalarProperty Name="UsuarioReg" ColumnName="UsuarioReg" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="NivelId" ColumnName="NivelId" />
+          <ScalarProperty Name="UsuarioName" ColumnName="UsuarioName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NivelRef">
+      <EntityTypeMapping TypeName="AgropuliModel.NivelRef">
+        <MappingFragment StoreEntitySet="NivelRef">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuModificacion" ColumnName="UsuModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuCreacion" ColumnName="UsuCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="PorcentajeDinero" ColumnName="PorcentajeDinero" />
+          <ScalarProperty Name="PorcentajePuntos" ColumnName="PorcentajePuntos" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

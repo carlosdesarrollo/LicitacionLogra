@@ -1,0 +1,36 @@
+﻿@model AgropuliApp.Models.Favor
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Crear AgroEnvio</h4>
+
+<div class="container">
+    <p>
+        ¡Permitenos conseguir lo que necesites!
+    </p>
+    <p>
+        A continuación danos una descripción de lo que necesitas, lo mas detallado posible, indicanos donde puede conseguirse y cual es el valor aproximado.
+    </p>
+    <p>
+        Una vez hayas creado tu AgroEnvio, nos comunicaremos a la menor brevedad posible.
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.Label("Descripción", htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control inset-box-shadow", style = "resize:none", rows = "3", required = "required" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input type="submit" value="Crear AgroEnvio" class="btn btn-success btn-block box-shadow" />
+        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary btn-block box-shadow" })
+    }
+</div>

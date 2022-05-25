@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Pedido";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header green">
+            <strong class="white-text">Productos</strong>
+        </div>
+        <div class="card-body">
+            <form class="text-center">
+                <label>Seleccionar producto</label>
+                <select class="browser-default custom-select mb-4">
+                    <option value="">Seleccione...</option>
+                    <option value="1">
+                        TDDA 1 - Tierra de Diatomeas Agropuli
+                    </option>
+                    <option value="2">
+                        TDDA 2 - Tierra De Diatomeas Agropuli
+                    </option>
+                    <option value="3">
+                        TDDA 8 - Tierra de Diatomeas Agropuli
+                    </option>
+                    <option value="4">
+                        TDDA G8 - Tierra De Diatomeas Agropuli
+                    </option>
+                    <option value="5">
+                        TDDA G1 - Tierra De Diatomeas Agropuli
+                    </option>
+                    <option value="6">
+                        TDDA H1 - Tierra De Diatomeas Agropuli
+                    </option>
+                    <option value="7">
+                        HA 20 - Humus Agropuli 20
+                    </option>
+                    <option value="8">
+                        Arena para gatos DIATOPET´S X 8 KG
+                    </option>
+                    <option value="9">
+                        Arena para gatos DIATOPET´S X 4 KG
+                    </option>
+                </select>
+
+                <label>Nombre</label>
+                <h5 class="mb-2">TDDA 1 - Tierra de Diatomeas Agropuli</h5><br />
+
+                <label>Descripcion</label>
+                <h5 class="mb-2">Saco X 25 Kg Malla 200</h5><br />
+
+                <label>Valor Unitario</label>
+                <h5 class="mb-2">$ 120,000</h5><br />
+
+                <label>Cantidad</label>
+                <div style="margin:0 auto;width:10em">
+                    <div class="def-number-input number-input safari_only">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
+                </div>
+
+                <label>TOTAL</label>
+                <h5>$ 240,000</h5>
+
+                <button href="/App/Products" class="btn btn-light-green btn-block mt-3" type="submit"><i class="fas fa-plus-circle"></i> Adicionar al pedido</button>
+                <button href="/App/Products" class="btn btn-green btn-block mt-3" type="submit"><i class="fas fa-shopping-cart"></i> Ir al pedido</button>
+                <a href="/App/Menu" class="btn btn-light-green btn-block mt-3"><i class="fas fa-list"></i> Volver al menu</a>
+            </form>
+        </div>
+    </div>
+</div>

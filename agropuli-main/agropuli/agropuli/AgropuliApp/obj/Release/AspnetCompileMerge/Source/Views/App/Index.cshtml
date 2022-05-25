@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/_Shared/_LoginLayout.cshtml";
+}
+
+<div class="se-pre-con">
+    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div class="container">
+    <form method="post">
+        <h1 class="text-white text-center">AGROPULI</h1>
+        <hr />
+        <h4 class="text-white text-center">INGRESAR</h4>
+
+        <div class="form-group">
+            <label for="Username" class="text-white">Usuario</label>
+            <input id="Username" name="Username" class="form-control inset-box-shadow" maxlength="50" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Password" class="text-white"> Contraseña</label>
+            <input id="Password" name="Password" class="form-control inset-box-shadow" maxlength="50" type="password" required>
+        </div>
+
+        <button class="btn btn-success btn-block box-shadow" type="submit">Ingresar</button>
+        <a class="btn btn-secondary btn-block box-shadow" href="/User/Create">Crear mi cuenta</a>
+    </form>
+</div>

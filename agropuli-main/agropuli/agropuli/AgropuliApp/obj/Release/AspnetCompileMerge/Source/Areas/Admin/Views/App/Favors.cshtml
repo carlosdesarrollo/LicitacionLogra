@@ -1,0 +1,31 @@
+﻿
+@model List<AgropuliApp.Models.Favor>
+
+@{
+    ViewBag.Title = "Favors";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Logs</h4>
+
+<div class="container">
+    <a class="btn btn-secondary btn-block box-shadow" href="/Admin/App/Menu">Volver al menu</a>
+
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                @item.Created.ToShortDateString() @item.Created.ToShortTimeString()
+            </div>
+            <div class="card-body">
+                <p>
+                    @item.User.FullName
+                    @item.User.Phone
+                </p>
+                <p>
+                    @item.Description
+                </p>
+            </div>
+        </div>
+    }
+</div>

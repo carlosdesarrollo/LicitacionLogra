@@ -1,0 +1,148 @@
+﻿@using AgropuliApp.Models;
+@{
+    ViewBag.Title = "DetailsService";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+    Payu payu = (Payu)ViewBag.Payu;
+    User user = (User)ViewBag.User;
+}
+@{
+    AgropuliApp.Models.DetailsService objen = ViewBag.Details;
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Detalle Servicio</h4>
+
+<div class="container">
+    <form method="post" action="@payu.Url">
+        <input name="merchantId" type="hidden" value="@payu.MerchantId">
+        <input name="accountId" type="hidden" value="@payu.AccountId">
+        <input name="description" type="hidden" value="@payu.Description">
+        <input name="referenceCode" type="hidden" value="@payu.ReferenceCode">
+        <input name="amount" type="hidden" value="@payu.Amount">
+        <input name="tax" type="hidden" value="@payu.Tax">
+        <input name="taxReturnBase" type="hidden" value="@payu.TaxReturnBase">
+        <input name="currency" type="hidden" value="@payu.Currency">
+        <input name="signature" type="hidden" value="@payu.Signature">
+        <input name="test" type="hidden" value="@payu.Test">
+        <input name="responseUrl" type="hidden" value="@payu.ResponseUrl">
+        <input name="confirmationUrl" type="hidden" value="@payu.ConfirmationUrl">
+
+        <input type="hidden" id="hddId" value="@objen.Id" />
+        <input type="hidden" id="hddTypeCat" value="@objen.ImgTypeCat" />
+        <input type="hidden" id="hddCatID" value="@objen.CategoriaID" />
+        <input type="hidden" id="hddTypeServ" value="@objen.ImgTypeService" />
+        <input type="hidden" id="hddServID" value="@objen.ServicioID" />
+        <div class="form-group">
+            <label class="form-label">Categoría: </label>
+            <label>@objen.Categoria</label>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Imagen Categoría: </label>
+            <div id="divImgCat"></div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Servicio: </label>
+            <label>@objen.Servicio</label>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Imagen Servicio: </label>
+            <div id="divImgService"></div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Precio</label>
+            @if (ViewBag.RolId == 3)
+            {
+                <input type="text" class="form-control inset-box-shadow" id="txtPrecio" value="@objen.Precio" />
+            }
+            else
+            {
+                <label>@objen.Precio</label>
+            }
+
+        </div>
+        <div class="form-group">
+            @if (ViewBag.RolId == 3)
+            {
+                <button class="btn btn-success btn-block box-shadow" id="btnGuardar">Guardar</button>
+            }
+            else
+            {
+        <button class="btn btn-success btn-block box-shadow" type="submit"><i class="fas fa-dollar-sign"></i> Pagar</button>
+            }
+
+            <a href="/Order/ListServices" class="btn btn-secondary btn-block box-shadow">Regresar</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        let imgtypecat = $("#hddCatID").val();
+        let catid = $("#hddCatID").val();
+        if (imgtypecat != "" && imgtypecat != null) {
+            fnCargarImg(catid, imgtypecat, 1);
+        } else {
+            text = '<img src="../../img/product/sinfoto.jpeg" height="200" width="200" />';
+            $("#divImgCat").append(text);
+        }
+
+        let imgtypeserv = $("#hddTypeServ").val();
+        let servid = $("#hddServID").val();
+        if (imgtypeserv != "" && imgtypeserv != null) {
+            fnCargarImg(servid, imgtypeserv, 2);
+        } else {
+            text = '<img src="../../img/product/sinfoto.jpeg" height="200" width="200" />';
+            $("#divImgService").append(text);
+        }
+
+
+        $("#btnGuardar").click(function () {
+            fnEditarPrecio();
+        })
+
+    })
+
+    function fnEditarPrecio() {
+        let id = $("#hddId").val();
+        let precio = $("#txtPrecio").val();
+
+        if (precio == 0 || precio == null) {
+            alert("Ingresar Precio");
+            return;
+        }
+
+        let param = { "id": id, "precio": precio };
+
+        $.post("/Order/GetEditarPrecio", param, function (data) {
+            alert(data);
+        });
+    }
+
+    function fnCargarImg(id, typeimg, tipo) {
+        let url = "";
+        if (tipo == 1) {
+            url = "/Order/GetImageFileCategory/" + id;
+        } else {
+            url = "/Order/GetImageFileService/" + id;
+        }
+
+        $.get(url, function (data) {
+            let text = '';
+            if (data != "") {
+                if (typeimg == "png") {
+                    text = '<img src="data:image/png;base64,' + data + '" height="200" width="200">';
+                } else if (typeimg == "jpg") {
+                    text = '<img src="data:image/jpg;base64,' + data + '" height="200" width="200">';
+                } else {
+                    text = '<img src="data:image/jpg;base64,' + data + '" height="200" width="200" />';
+                }
+            }
+
+            if (tipo == 1) {
+                $("#divImgCat").append(text);
+            } else {
+                $("#divImgService").append(text);
+            }
+
+        });
+    }
+</script>

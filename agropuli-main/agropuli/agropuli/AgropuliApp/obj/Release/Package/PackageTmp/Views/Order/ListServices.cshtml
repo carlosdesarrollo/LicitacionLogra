@@ -1,0 +1,157 @@
+﻿@model IEnumerable<AgropuliApp.Models.ServiceCotiList>
+@{
+    ViewBag.Title = "ListServices";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Lista de servicios cotizaciones y pedidos</h4>
+<input type="hidden" id="hddCodigo" name="hddCodigo" value="0"/>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th class="text-nowrap">
+                        Fecha Creación
+                    </th>
+                    <th class="text-nowrap">
+                        Nombre completo
+                    </th>
+                    <th class="text-nowrap">
+                        Telefono o Celular
+                    </th>
+                    <th class="text-nowrap">
+                        Email
+                    </th>
+                    <th class="text-nowrap">
+                        Servicio
+                    </th>
+                    <th class="text-nowrap">
+                        Total
+                    </th>
+                    <th class="text-nowrap">
+                        Estado de Pago
+                    </th>
+                    <th class="text-nowrap">
+                        Comentario
+                    </th>
+                    <th class="text-nowrap">
+                        Detalle
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.Servicio)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td class="text-nowrap">
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td class="text-nowrap">
+                <center><button class="btn btn-primary" onclick="fnListarComentario(@Html.DisplayFor(modelItem => item.Id))">Ver</button></center>
+            </td>
+            <td class="text-nowrap">
+                @Html.ActionLink("Detalle", "DetailsService", new { id = item.Id }, new { @class = "btn btn-success box-shadow" })
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+
+    @Html.ActionLink("Crear servicio", "../App/Services", null, new { @class = "btn btn-success btn-block box-shadow" })
+    <a class="btn btn-secondary btn-block box-shadow" href="/App/Menu">Regresar</a>
+</div>
+
+<div class="modal" tabindex="-1" id="modalComentarios">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Comentario</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row" id="divComentario">
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        @if (ViewBag.RolId == 3)
+                        {
+                            <textarea class="form-control" id="txtComentario"></textarea>
+                        }
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCerrar">Cerrar</button>
+                @if (ViewBag.RolId == 3)
+                {
+                    <button type="button" class="btn btn-primary" id="btnResponder">Responder</button>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#btnCerrar").click(function () {
+            $("#modalComentarios").modal("hide");
+        })
+
+        $("#btnResponder").click(function () {
+            let id = $("#hddCodigo").val();
+            fnGrabarRespuesta(id);
+        })
+    })
+
+    function fnGrabarRespuesta(id) {
+        let comentario = $("#txtComentario").val();
+        var param = { 'comentario': comentario, 'codigo': id, 'menu': 'ServiceCompras' };
+        $.post("../Order/PostComentarioResp", param, function (data) {
+            alert(data);
+            $("#modalComentarios").modal("hide");
+        });
+    }
+
+    function fnListarComentario(id) {
+        $("#divComentario").empty();
+        $("#txtComentario").val("");
+        var param = { 'id': id, 'menu': 'ServiceCompras' };
+        $.get("../Order/GetCometnarios", param, function (data) {
+
+            let text = '';
+            for (var i = 0; i < data.length; i++) {
+                $("#hddCodigo").val(data[i]["codigo"]);
+                text += "- " + data[i]["comentario"];
+                text += "<br>";
+            }
+            $("#divComentario").append(text);
+            $("#modalComentarios").modal("show");
+        });
+    }
+</script>

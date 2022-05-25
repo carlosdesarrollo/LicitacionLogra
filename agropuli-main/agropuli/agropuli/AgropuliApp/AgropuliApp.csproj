@@ -1,0 +1,412 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3DE4692C-A0CB-412B-9761-73BAD53606D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AgropuliApp</RootNamespace>
+    <AssemblyName>AgropuliApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\admin.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\app.css" />
+    <Content Include="css\site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\bg_login.png" />
+    <Content Include="img\bg_new.png" />
+    <Content Include="img\categories\sinfoto.jpeg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\logo_new.png" />
+    <Content Include="img\menu\accountant.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\addProduct.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\agroEnvios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\crm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\orders.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\points.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\referrals.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\services.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\menu\workWithUs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\product\sinfoto.jpeg" />
+    <Content Include="js\app.js" />
+    <Content Include="js\site.js" />
+    <Content Include="Models\AgropuliModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AgropuliModel.Context.cs</LastGenOutput>
+      <DependentUpon>AgropuliModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\AgropuliModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AgropuliModel.edmx</DependentUpon>
+      <LastGenOutput>AgropuliModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\GetOrdersByUser.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Accountant.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Logs.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Referrals.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Favors.cshtml" />
+    <Content Include="Areas\Admin\Views\App\Error.cshtml" />
+    <Content Include="docs\Agropuli Privacy Policy.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="photos\nodelete" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AppController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FavorsController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ReferralsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Appointment.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriaAllST.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ciudad.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comentarios.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Crop.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Departmento.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetailsService.cs" />
+    <Compile Include="Models\Favor.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Job.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Log.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NivelRef.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderProduct.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pest.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProdCatList.cs" />
+    <Compile Include="Models\ProdCotiList.cs" />
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReferidosList.cs" />
+    <Compile Include="Models\Referral.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCatActive.cs" />
+    <Compile Include="Models\ServiceCategory.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCompras.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCotiList.cs" />
+    <Compile Include="Models\TypeClient.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypeProveedor.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypeSubProveedor.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuNivelRef.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vehicle.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkWithUs.cs">
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payu.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgropuliModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgropuliModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgropuliModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgropuliModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgropuliModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgropuliModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\AgropuliModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AgropuliModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AgropuliModel.edmx.diagram">
+      <DependentUpon>AgropuliModel.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="Views\_Shared\_AppLayout.cshtml" />
+    <Content Include="Views\_Shared\_Layout.cshtml" />
+    <Content Include="Views\App\Index.cshtml" />
+    <Content Include="Views\App\Menu.cshtml" />
+    <Content Include="Views\Order\AddProduct.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Views\Order\Pay.cshtml" />
+    <Content Include="Views\App\Services.cshtml" />
+    <Content Include="Views\Order\PayuResponse.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Views\_Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\_Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\App\Accountant.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\App\WorkWithUs.cshtml" />
+    <Content Include="Views\App\Error.cshtml" />
+    <Content Include="Views\Referrals\Create.cshtml" />
+    <Content Include="Views\Referrals\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Favors\Create.cshtml" />
+    <Content Include="Views\Favors\Index.cshtml" />
+    <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\Delete.cshtml" />
+    <Content Include="Views\Appointment\Details.cshtml" />
+    <Content Include="Views\Appointment\Edit.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\Order\ListServices.cshtml" />
+    <Content Include="Views\Order\DetailsService.cshtml" />
+    <Content Include="Views\Order\ListProducts.cshtml" />
+    <Content Include="Views\Order\ServiceCatList.cshtml" />
+    <Content Include="Views\Order\ProductCatList.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="resumes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51095</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51095/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

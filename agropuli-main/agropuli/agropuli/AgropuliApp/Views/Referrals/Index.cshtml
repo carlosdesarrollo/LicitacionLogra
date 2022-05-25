@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AgropuliApp.Models.ReferidosList>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Mis Referidos</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: 25rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5 class="card-title">@ViewBag.UsuarioS</h5></li>
+                    <li class="list-group-item"><label>Dinero a favor @ViewBag.DineroFavor</label></li>
+                    <li class="list-group-item"><label>Porcentaje Descuento @ViewBag.Porcentajedescuento %</label></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th class="text-nowrap">
+                        Creado
+                    </th>
+                    <th>
+                        Cédula de ciudadanía
+                    </th>
+                    <th>
+                        Nombre completo
+                    </th>
+                    <th>
+                        Nivel
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCompleto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nivel)
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.ActionLink("Crear referido", "Create", null, new { @class = "btn btn-success btn-block box-shadow" })
+    <a class="btn btn-secondary btn-block box-shadow" href="/App/Menu">Volver al menu</a>
+</div>

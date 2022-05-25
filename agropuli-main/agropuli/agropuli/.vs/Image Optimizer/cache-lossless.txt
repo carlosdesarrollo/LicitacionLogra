@@ -1,0 +1,5 @@
+C:\Projects\andrescode\Detallitos.co\agropuli\AgropuliApp\img\logo.png|93949
+C:\Projects\andrescode\Detallitos.co\agropuli\AgropuliApp\img\menu\crm.png|9932
+C:\Projects\andrescode\Detallitos.co\agropuli\AgropuliApp\img\menu\addProduct.png|5751
+C:\Projects\andrescode\Detallitos.co\agropuli\AgropuliApp\img\menu\services.png|6413
+C:\Projects\andrescode\Detallitos.co\agropuli\AgropuliApp\img\bg_new.png|4007213

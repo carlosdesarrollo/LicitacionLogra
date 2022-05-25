@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgropuliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="NationalId" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Town" Type="nvarchar" MaxLength="100" />
+    <Property Name="Vereda" Type="nvarchar" MaxLength="100" />
+    <Property Name="Farm" Type="nvarchar" MaxLength="100" />
+    <Property Name="GPS" Type="nvarchar" MaxLength="100" />
+    <Property Name="Administrator" Type="nvarchar" MaxLength="100" />
+    <Property Name="Crop" Type="nvarchar" MaxLength="100" />
+    <Property Name="Variety" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ha" Type="float" />
+    <Property Name="Quote" Type="nvarchar" MaxLength="100" />
+    <Property Name="Product" Type="nvarchar" MaxLength="100" />
+    <Property Name="CallDate" Type="datetime" />
+    <Property Name="SecondaryCrop" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="RequestAppointment" Type="bit" />
+    <Property Name="AssignTechnician" Type="bit" />
+    <Property Name="NextAppointment" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ServiceCompras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="ServicioId" Type="int" />
+    <Property Name="Precio" Type="money" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen" Type="text" />
+  </EntityType>
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDepartament" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Comentarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="300" />
+    <Property Name="Codigo" Type="varchar" MaxLength="200" />
+    <Property Name="Menu" Type="varchar" MaxLength="100" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="100" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Crop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departmento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Favor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NivelRef">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PorcentajePuntos" Type="int" />
+    <Property Name="PorcentajeDinero" Type="int" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Reference" />
+    </Key>
+    <Property Name="Reference" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Total" Type="money" />
+    <Property Name="PaymentDateTime" Type="datetime" />
+    <Property Name="PayuState" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayuResponseCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="PayuReference" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayuTransaction" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayuPaymentMethod" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayuPaymentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeMod" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="OrderReference" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="OrderReference" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="SubTotalPrice" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen" Type="text" />
+  </EntityType>
+  <EntityType Name="Referral">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NationalId" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen" Type="text" />
+    <Property Name="Price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
+    <Property Name="Imagen" Type="text" />
+  </EntityType>
+  <EntityType Name="TypeClient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TypeProveedor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TypeSubProveedor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProveedor" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="UsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="NationalId" Type="nvarchar" MaxLength="12" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Town" Type="nvarchar" MaxLength="100" />
+    <Property Name="Vereda" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="12" />
+    <Property Name="Farm" Type="nvarchar" MaxLength="100" />
+    <Property Name="Crop" Type="nvarchar" MaxLength="100" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="CedulaRef" Type="varchar" MaxLength="20" />
+    <Property Name="TypeProveedorId" Type="int" />
+    <Property Name="TypeSubProveedorId" Type="int" />
+    <Property Name="DepartamentoId" Type="int" />
+    <Property Name="CiudadId" Type="int" />
+  </EntityType>
+  <EntityType Name="UsuNivelRef">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NivelId" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioReg" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkWithUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="VehicleId" Type="int" />
+    <Property Name="IsTechnician" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Favor_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Favor" Type="Self.Favor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Favor">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderProduct_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Reference" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="OrderReference" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderProduct_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Referral_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Referral" Type="Self.Referral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Referral">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_Category">
+    <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkWithUs_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="WorkWithUs" Type="Self.WorkWithUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkWithUs">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkWithUs_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="WorkWithUs" Type="Self.WorkWithUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="WorkWithUs">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkWithUs_Vehicle">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="WorkWithUs" Type="Self.WorkWithUs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkWithUs">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AgropuliModelStoreContainer">
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="Agropuli" store:Type="Tables" />
+    <EntitySet Name="ServiceCompras" EntityType="Self.ServiceCompras" Schema="Agropuli" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Crop" EntityType="Self.Crop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departmento" EntityType="Self.Departmento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favor" EntityType="Self.Favor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NivelRef" EntityType="Self.NivelRef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pest" EntityType="Self.Pest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Referral" EntityType="Self.Referral" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeClient" EntityType="Self.TypeClient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeProveedor" EntityType="Self.TypeProveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeSubProveedor" EntityType="Self.TypeSubProveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuNivelRef" EntityType="Self.UsuNivelRef" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkWithUs" EntityType="Self.WorkWithUs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Favor_User" Association="Self.FK_Favor_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Favor" EntitySet="Favor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderProduct" EntitySet="OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderProduct" EntitySet="OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Referral_User" Association="Self.FK_Referral_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Referral" EntitySet="Referral" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_Category" Association="Self.FK_Service_Category">
+      <End Role="ServiceCategory" EntitySet="ServiceCategory" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkWithUs_Job" Association="Self.FK_WorkWithUs_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="WorkWithUs" EntitySet="WorkWithUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkWithUs_User" Association="Self.FK_WorkWithUs_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="WorkWithUs" EntitySet="WorkWithUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkWithUs_Vehicle" Association="Self.FK_WorkWithUs_Vehicle">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="WorkWithUs" EntitySet="WorkWithUs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

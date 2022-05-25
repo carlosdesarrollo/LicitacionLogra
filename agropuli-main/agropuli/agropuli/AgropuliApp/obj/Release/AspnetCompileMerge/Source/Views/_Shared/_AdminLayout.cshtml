@@ -1,0 +1,51 @@
+﻿@using AgropuliApp.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Agropuli - @ViewBag.Title</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/admin.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCpcVnrCCECJxp2rYSXPTPwNVpXaY2NSG4&language=en&SensorNotRequired=false&libraries=places"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2 class="text-white text-center">AGROPULI - Admin</h2>
+
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <div class="text-right">
+                    <a href="/User/Edit" class="text-white text-decoration-none">Mi cuenta</a><br>
+                    <a href="/App/Logout" class="text-white text-decoration-none">Salir</a>
+                </div>
+            }
+        </nav>
+    </header>
+    <main>
+        @if (TempData["Alert"] != null)
+        {
+            <div class="container">
+                <div class="alert alert-@Html.Raw(((Alert)TempData["Alert"]).Type)" role="alert">
+                    @Html.Raw(((Alert)TempData["Alert"]).Message)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        }
+
+        @RenderBody()
+    </main>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="~/js/app.js"></script>
+</body>
+</html>

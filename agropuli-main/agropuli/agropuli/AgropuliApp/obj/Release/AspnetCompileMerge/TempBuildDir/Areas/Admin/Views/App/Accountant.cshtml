@@ -1,0 +1,19 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Accountant";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Contador Agricola</h4>
+
+<div class="container">
+    <a class="btn btn-secondary btn-block box-shadow" href="/Admin/Users/Index">Regresar</a>
+
+    <div class="photos">
+        @foreach (var item in Model)
+        {
+            <img src="~/photos/@Path.GetFileName(item)" />
+        }
+    </div>
+</div>

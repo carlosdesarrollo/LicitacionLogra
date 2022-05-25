@@ -1,0 +1,73 @@
+﻿@model AgropuliApp.Models.User
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Menu</h4>
+
+<div class="container menu">
+    <div class="row text-center">
+        @if (Model.RoleId == 2)
+        {
+            <div class="col-4">
+                <a href="/Order/AddProduct">
+                    <img src="~/img/menu/addProduct.png" /><label>Productos Agropuli</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/App/Services">
+                    <img src="~/img/menu/services.png" /><label>Nuestros servicios</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/App/Accountant">
+                    <img src="~/img/menu/accountant.png" /><label>Tu contador agrícola</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/Favors/Index">
+                    <img src="~/img/menu/agroEnvios.png" /><label>AgroEnvios</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/Admin/Users/Index">
+                    <img src="~/img/menu/orders.png" /><label>Informes</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/Referrals/Index">
+                    <img src="~/img/menu/referrals.png" /><label>Mis referidos</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/App/WorkWithUs">
+                    <img src="~/img/menu/workWithUs.png" /><label>Trabaja con nosotros</label>
+                </a>
+            </div>
+        }
+        @if (Model.RoleId == 3)
+        {
+            <div class="col-4">
+                <a href="/Order/ListProducts">
+                    <img src="~/img/menu/orders.png" /><label>Productos Agropuli</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/Order/ListServices">
+                    <img src="~/img/menu/services.png" /><label>Nuestros servicios</label>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="/Favors/Index">
+                    <img src="~/img/menu/agroEnvios.png" /><label>AgroEnvios</label>
+                </a>
+            </div>
+        }
+    </div>
+    @*<button href="#" class="btn btn-block">Mis ultimas compras</button>
+        <button href="#" class="btn btn-block">Coworking</button>
+        <button href="#" class="btn btn-block">Grado alimenticio</button>
+        <button href="#" class="btn btn-block">CRM</button>*@
+</div>

@@ -1,0 +1,57 @@
+﻿@using AgropuliApp.Models;
+
+@{
+    ViewBag.Title = "Nuestros Servicios";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Nuestros Servicios</h4>
+
+<div class="container">
+    <p>
+        Descubre todos los servicios que Agropuli tiene para apoyar sus proyectos agricolas.
+    </p>
+    <div class="form-group">
+        <label>Seleccionar categoría</label>
+        <select id="CategoryId" name="CategoryId" class="form-control inset-box-shadow" onchange="SelectCategory();">
+            <option value="">Seleccione...</option>
+            @foreach (var item in (List<ServiceCategory>)ViewBag.Categories)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div id="services" class="d-none table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th>Servicios</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+</div>
+
+<script>
+    function SelectCategory() {
+        if ($("#CategoryId").val() == "") {
+            $("#services").addClass("d-none");
+        }
+        else {
+            $("#services").removeClass("d-none");
+
+            $.get("/App/GetServicesByCategory/" + $("#CategoryId").val(), function (data) {
+                $("#services tbody").html("");
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#services tbody").append($('<tr><td>' + data[i].name + '</td></tr>'));
+                }
+            });
+        }
+    }
+</script>

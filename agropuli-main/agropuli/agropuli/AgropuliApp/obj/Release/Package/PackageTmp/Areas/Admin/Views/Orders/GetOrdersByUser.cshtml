@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AgropuliApp.Models.Order>
+
+@{
+    ViewBag.Title = "Pedidos";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Pedidos del Usuario</h4>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th class="text-nowrap">
+                        Creado
+                    </th>
+                    <th class="text-nowrap">
+                        Nombre completo
+                    </th>
+                    <th class="text-nowrap">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th class="text-nowrap">
+                        Telefono o Celular
+                    </th>
+                    <th class="text-nowrap">
+                        Direccion
+                    </th>
+                    <th class="text-nowrap">
+                        Ciudad
+                    </th>
+                    <th class="text-nowrap">
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <th class="text-nowrap">
+                        Estado de Pago
+                    </th>
+                    <th class="text-nowrap"></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Customer)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.DisplayFor(modelItem => item.PayuState)
+                    </td>
+                    <td class="text-nowrap">
+                        @Html.ActionLink("Detalle", "Details", new { id = item.Reference }, new { @class = "btn btn-success box-shadow" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <a class="btn btn-secondary btn-block box-shadow" href="/Admin/Users/Index">Regresar</a>
+</div>

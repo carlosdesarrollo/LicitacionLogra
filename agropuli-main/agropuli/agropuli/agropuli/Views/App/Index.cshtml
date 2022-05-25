@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Inicio";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header green">
+            <h4 class="white-text">Ingresar</h4>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="md-form">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="email" id="usuario" class="form-control" required>
+                    <label for="usuario">Usuario</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="fas fa-unlock prefix"></i>
+                    <input type="password" id="contraseña" class="form-control" required>
+                    <label for="contraseña">Contraseña</label>
+                </div>
+
+                <a href="/App/Menu" class="btn btn-green btn-block" type="submit">Ingresar</a>
+            </form>
+        </div>
+    </div>
+</div>

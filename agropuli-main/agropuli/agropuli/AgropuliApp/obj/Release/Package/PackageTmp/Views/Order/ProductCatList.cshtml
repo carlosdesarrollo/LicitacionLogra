@@ -1,0 +1,122 @@
+﻿@using AgropuliApp.Models;
+@{
+    ViewBag.Title = "ProductCatList";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Nuestros Productos</h4>
+<br />
+<div class="container-fluid">
+    <input id="priceTotal" type="hidden" />
+    <input id="price" type="hidden" />
+    <input id="ProductoId" type="hidden" />
+
+    @foreach (var item in (List<ProdCatList>)ViewBag.Productos)
+    {
+        <a onclick="fnCotizarProductos(@item.Id , '@item.Name', @item.Price)">
+            <!-- Gallery item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="bg-white rounded shadow-sm">
+                    @if (item.Imagen != "")
+                    {
+                        <img src="data: @item.ImageMimeType ;base64, @item.Imagen " alt="" class="img-fluid card-img-top">
+                    }
+                    else
+                    {
+                        <img src="../../img/product/sinfoto.jpeg" alt="" class="img-fluid card-img-top">
+                    }
+
+                    <div class="p-4">
+                        <h5> <a href="#" class="text-dark">@item.Name</a></h5>
+                        <p class="small text-muted mb-0">@item.Description</p>
+                        <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                            <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">$ @item.Price.ToString("0,0.00")</span></p>
+                            <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Nuevo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </a>
+    }
+    <a href="/Order/Pay" class="btn btn-success btn-block box-shadow"><i class="fas fa-shopping-cart"></i> Ir al pedido</a>
+    <a href="/Order/ListProducts" class="btn btn-success btn-block box-shadow"><i class="fas fa-list"></i> Listado de pedido</a>
+    <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+    <br />
+</div>
+
+<div class="modal" tabindex="-1" id="modalCotizar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Comentario</h5>
+            </div>
+            <div class="modal-body">
+                <label id="lblMensaje"></label>
+                <br />
+                <label>Cantidad</label>
+                <div style="width:10em">
+                    <div class="def-number-input number-input safari_only mb-2">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); ChangeQuantity()" class="minus" type="button"></button>
+                        <input id="Quantity" id="Quantity" class="quantity" min="1" value="1" type="number" onchange="ChangeQuantity()">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); ChangeQuantity()" class="plus" type="button"></button>
+                    </div>
+                </div>
+                <br />
+                <label>Total</label>
+                <label id="total"></label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCerrar">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarCoti">Guardar</button>
+                <a href="/Order/Pay" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Ir al pedido</a>
+                <a href="/Order/ListProducts" class="btn btn-success"><i class="fas fa-list"></i> Listado de pedido</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $("#btnCerrar").click(function () {
+        $("#modalCotizar").modal("hide");
+    })
+
+    $("#btnGuardarCoti").click(function () {
+        let url = "/Order/AddProduct";
+        let prodid = $("#ProductoId").val();
+        let cantidad = $("#Quantity").val();
+        let precio = $("#price").val();
+        let precioTotal = $("#priceTotal").val();
+        let datos = { "ProductId": prodid, "Quantity": cantidad, 'Price': precio, 'SubTotalPrice': precioTotal};
+
+        $.post(url,datos, function (data) {
+            alert(data);
+            location.reload();
+        });
+
+        $("#modalCotizar").modal("hide");
+    })
+
+    function fnCotizarProductos(id, nombre, precio) {
+        let text = "";
+        text += "¿Está seguro de agregar este producto al pedido?";
+        text += "<br>";
+
+        text += "Enviar comentario para cotizar";
+        text += "<br>";
+
+        $("#total").html("$" + precio.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+        $("#price").val(precio);
+        $("#lblMensaje").html(text);
+        $("#ProductoId").val(id);
+
+        $("#modalCotizar").modal("show");
+    }
+
+    function ChangeQuantity() {
+        var total = $("#price").val() * $("#Quantity").val();
+        $("#priceTotal").val(total);
+        $("#total").html("$" + total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+    }
+</script>

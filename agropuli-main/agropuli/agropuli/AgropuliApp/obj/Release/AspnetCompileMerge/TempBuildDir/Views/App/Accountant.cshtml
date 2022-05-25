@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Tu Contador Agrícola";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Tu Contador Agrícola</h4>
+
+<div class="container">
+    <p>
+        Es una empresa legalmente constituida, con personal idóneo, será tu bróker, quien te prestara los servicios de registro de los datos de tu finca o empresa agrícola, en nuestro software agrícola y contable, donde a través de nuestra APP, de una forma segura, con la mayor reserva, nos envías escaneado o en fotos, todos los recibos de compras de insumos, pago de labores, jornales o nomina, facturas de ventas o cuentas de cobro, inventarios existentes, cultivos, lotes, localización, etc. y recibirás un informe mensual de todas las actividades, e reporte contable para impuestos y declaraciones de renta, balances, estados de cuentas, facturación electrónica, etc.
+    </p>
+    <p>
+        Si deseas saber si ganas o pierdes dinero con tu finca y/o empresa agrícola, escríbenos en el formulario y o ¡llama ya!
+    </p>
+    <p>
+        ¡Te asesoramos completamente gratis!
+    </p>
+    <p>
+        Por favor adjunta las fotos de:
+    </p>
+    <p>
+        <ul>
+            <li>Facturas de compras</li>
+            <li>Facturas de ventas</li>
+            <li>Planillas de labores</li>
+            <li>Planillas de sanidad</li>
+            <li>Planillas de inventarios</li>
+            <li>Planillas de pagos de nomina</li>
+            <li>Otros gastos</li>
+        </ul>
+    </p>
+    @using (Html.BeginForm("Accountant", "App", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <input type="file" name="uploadedFiles" multiple />
+        </div>
+
+        <button class="btn btn-success btn-block box-shadow" type="submit">Adjuntar imágenes</button>
+        <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+    }
+</div>

@@ -1,0 +1,104 @@
+﻿@using AgropuliApp.Models;
+
+@{
+    ViewBag.Title = "Agregar Producto al Pedido";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Agregar Producto al Pedido</h4>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label>Seleccionar categoría</label>
+            <select id="CategoryId" name="CategoryId" class="form-control inset-box-shadow" onchange="SelectCategory();">
+                <option value="">Seleccione...</option>
+                @foreach (var item in (List<Category>)ViewBag.Categories)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div id="products" class="form-group d-none">
+            <label>Seleccionar producto</label>
+            <select id="ProductId" name="ProductId" class="form-control inset-box-shadow" onchange="SelectProduct();">
+            </select>
+        </div>
+
+        <div id="productDetail" class="d-none">
+            <div class="form-group">
+                <label>Descripcion</label>
+                <span id="description" class="form-control inset-box-shadow" style="height: auto"></span>
+            </div>
+            <div class="form-group">
+                <label>Valor Unitario</label>
+                <input id="price" type="hidden" />
+                <span id="priceText" class="form-control inset-box-shadow"></span>
+            </div>
+            <div class="form-group">
+                <label>Cantidad</label>
+                <div style="width:10em">
+                    <div class="def-number-input number-input safari_only mb-2">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); ChangeQuantity()" class="minus" type="button"></button>
+                        <input id="Quantity" name="Quantity" class="quantity" min="1" value="1" type="number" onchange="ChangeQuantity()">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); ChangeQuantity()" class="plus" type="button"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>TOTAL</label>
+                <span id="total" class="form-control inset-box-shadow"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success btn-block box-shadow" type="submit"><i class="fas fa-plus-circle"></i> Agregar al pedido</button>
+            </div>
+        </div>
+
+        <a href="/Order/Pay" class="btn btn-success btn-block box-shadow"><i class="fas fa-shopping-cart"></i> Ir al pedido</a>
+        <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+    </form>
+</div>
+
+<script>
+    function SelectCategory() {
+        if ($("#CategoryId").val() == "") {
+            $("#products").addClass("d-none");
+            $("#productDetail").addClass("d-none");
+        }
+        else {
+            $("#products").removeClass("d-none");
+            $("#productDetail").addClass("d-none");
+
+            $.get("/Order/GetProductsByCategory/" + $("#CategoryId").val(), function (data) {
+                $("#ProductId").html("<option value=''>Seleccione...</option>");
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#ProductId").append($('<option></option>').val(data[i].id).html(data[i].name));
+                }
+            });
+        }
+    }
+
+    function SelectProduct() {
+        if ($("#ProductId").val() == "") {
+            $("#productDetail").addClass("d-none");
+        }
+        else {
+            $("#productDetail").removeClass("d-none");
+
+            $.get("/Order/GetProduct/" + $("#ProductId").val(), function (data) {
+                $("#name").html(data.Name);
+                $("#description").html(data.Description);
+                $("#price").val(data.Price);
+                $("#priceText").html("$" + data.Price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+                ChangeQuantity();
+            });
+        }
+    }
+
+    function ChangeQuantity() {
+        var total = $("#price").val() * $("#Quantity").val();
+        $("#total").html("$" + total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."));
+    }
+</script>

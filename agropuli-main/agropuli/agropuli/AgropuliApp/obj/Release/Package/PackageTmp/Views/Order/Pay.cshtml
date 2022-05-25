@@ -1,0 +1,234 @@
+﻿@using AgropuliApp.Models;
+
+@{
+    ViewBag.Title = "Pedido";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+    Payu payu = (Payu)ViewBag.Payu;
+    User user = (User)ViewBag.User;
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Pedido No. @(((Order)ViewBag.Order).Reference)</h4>
+
+<div class="container">
+    <form method="post" action="@payu.Url">
+        <input id="hddRef" type="hidden" value="@payu.ReferenceCode">
+        <input id="hddProdDes" type="hidden" value="0">
+        <input name="merchantId" type="hidden" value="@payu.MerchantId">
+        <input name="accountId" type="hidden" value="@payu.AccountId">
+        <input name="description" type="hidden" value="@payu.Description">
+        <input name="referenceCode" id="referenceCode" type="hidden" value="@payu.ReferenceCode">
+        <input name="amount" type="hidden" value="@payu.Amount">
+        <input name="tax" type="hidden" value="@payu.Tax">
+        <input name="taxReturnBase" type="hidden" value="@payu.TaxReturnBase">
+        <input name="currency" type="hidden" value="@payu.Currency">
+        <input name="signature" type="hidden" value="@payu.Signature">
+        <input name="test" type="hidden" value="@payu.Test">
+        <input name="responseUrl" type="hidden" value="@payu.ResponseUrl">
+        <input name="confirmationUrl" type="hidden" value="@payu.ConfirmationUrl">
+
+        <div class="form-group">
+            <label for="extra1">Nombre completo</label>
+            <input id="extra1" name="extra1" class="form-control inset-box-shadow" type="text" value="@user.FullName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="buyerEmail">Email</label>
+            <input id="buyerEmail" name="buyerEmail" class="form-control inset-box-shadow" type="email" value="@user.Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="extra2">Telefono o Celular</label>
+            <input id="extra2" name="extra2" class="form-control inset-box-shadow" type="text" value="@user.Phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="shippingAddress">Direccion</label>
+            <input id="shippingAddress" name="shippingAddress" class="form-control inset-box-shadow" type="text" value="@user.Address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="extra3">Ciudad</label>
+            <input id="extra3" name="extra3" class="form-control inset-box-shadow" type="text" value="@user.Town" autocomplete="off" placeholder="" required>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                        decimal total = 0;
+                    }
+                    @foreach (var item in ((Order)ViewBag.Order).OrderProduct)
+                    {
+                        var subtotal = (item.Quantity * @item.Product.Price);
+
+                        if (item.SubTotalPrice != 0)
+                        {
+                            subtotal = item.SubTotalPrice;
+                        }
+
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Quantity</td>
+                            <td><a onclick="fnCambiarImporte('@subtotal ', @item.ProductId)">@Html.Raw(subtotal.ToString("c"))</a></td>
+                            <td><a href="/App/RemoveProduct/@i"><i class="fas fa-times-circle text-dark"></i></a></td>
+                        </tr>
+
+                        i++;
+                        total = total + (subtotal);
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input id="Total" type="hidden" value="@total" />
+                            <strong>@total.ToString("c")</strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        @if (ViewBag.RolId == 2)
+        {
+
+
+
+
+            <button class="btn btn-success btn-block box-shadow" type="submit"><i class="fas fa-dollar-sign"></i> Pagar</button>
+
+
+
+            <button class="btn btn-success btn-block box-shadow" type="button" id="btnCotizar"><i class="fas fa-dollar-sign"></i> Cotizar</button>
+
+
+
+            <a href="/Order/AddProduct" class="btn btn-success btn-block box-shadow"><i class="fas fa-plus-circle"></i> Agregar Producto al Pedido</a>
+        }
+
+        <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+    </form>
+</div>
+
+<div class="modal" tabindex="-1" id="modalCotizar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Comentario</h5>
+            </div>
+            <div class="modal-body">
+                <textarea class="form-control" id="txtComentario"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCerrar">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarCoti">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="modalDescuento">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Descuento</h5>
+            </div>
+            <div class="modal-body">
+                <label>Total</label>
+                <input type="text" id="txtDescuento" class="form-control" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCerrarDes">Cerrar</button>
+                @if (ViewBag.RolId == 3)
+                {
+                    <button type="button" class="btn btn-primary" id="btnGuardarDescuento">Guardar</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $("#btnGuardarDescuento").click(function () {
+        let ref = $("#hddRef").val();
+        let importe = $("#txtDescuento").val();
+        let prodid = $("#hddProdDes").val();
+
+        let datos = { "reference": ref, "importe": importe, "prodid": prodid };
+
+        $.post("/Order/DescuentoPedido/", datos, function (data) {
+            alert(data);
+            $("#modalDescuento").modal("show");
+            location.reload();
+        });
+    })
+
+    $("#btnCotizar").click(function () {
+        $("#modalCotizar").modal("show");
+    })
+
+    $("#btnCerrar").click(function () {
+        $("#modalCotizar").modal("hide");
+    })
+
+    $("#btnCerrarDes").click(function () {
+        $("#modalDescuento").modal("hide");
+    })
+
+    $("#btnGuardarCoti").click(function () {
+        let comentario = $("#txtComentario").val();
+        let reference = $("#referenceCode").val();
+
+        if (comentario == "") {
+            alert("Ingresar comentario");
+        } else {
+            var datos = { "menu": "Pedido", "comentario": comentario, "codigo": reference };
+            $.post("/Order/PostComentarioResp", datos, function (data) {
+                alert(data);
+                $("#modalCotizar").modal("hide");
+            });
+        }
+
+    })
+
+    var place;
+
+    function initialize() {
+        var options = {
+            types: ["(cities)"]
+        };
+
+        var input = document.getElementById("extra3");
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+        autocomplete.setComponentRestrictions(
+            { 'country': ['co'] });
+
+        google.maps.event.addListener(autocomplete, "place_changed", function () {
+            place = $("#extra3").val();
+        });
+    }
+    google.maps.event.addDomListener(window, "load", initialize);
+
+    $("#extra3").blur(function () {
+        if ($("#extra3").val() != place) {
+            $("#extra3").val("");
+        }
+    });
+
+    function fnCambiarImporte(importe, id) {
+        $("#txtDescuento").val(importe);
+        $("#hddProdDes").val(id);
+        $("#modalDescuento").modal("show");
+    }
+</script>

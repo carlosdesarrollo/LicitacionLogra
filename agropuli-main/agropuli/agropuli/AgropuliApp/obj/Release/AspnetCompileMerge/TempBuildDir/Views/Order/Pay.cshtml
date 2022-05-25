@@ -1,0 +1,123 @@
+﻿@using AgropuliApp.Models;
+
+@{
+    ViewBag.Title = "Pedido";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+    Payu payu = (Payu)ViewBag.Payu;
+    User user = (User)ViewBag.User;
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Pedido No. @(((Order)ViewBag.Order).Reference)</h4>
+
+<div class="container">
+    <form method="post" action="@payu.Url">
+        <input name="merchantId" type="hidden" value="@payu.MerchantId">
+        <input name="accountId" type="hidden" value="@payu.AccountId">
+        <input name="description" type="hidden" value="@payu.Description">
+        <input name="referenceCode" type="hidden" value="@payu.ReferenceCode">
+        <input name="amount" type="hidden" value="@payu.Amount">
+        <input name="tax" type="hidden" value="@payu.Tax">
+        <input name="taxReturnBase" type="hidden" value="@payu.TaxReturnBase">
+        <input name="currency" type="hidden" value="@payu.Currency">
+        <input name="signature" type="hidden" value="@payu.Signature">
+        <input name="test" type="hidden" value="@payu.Test">
+        <input name="responseUrl" type="hidden" value="@payu.ResponseUrl">
+        <input name="confirmationUrl" type="hidden" value="@payu.ConfirmationUrl">
+
+        <div class="form-group">
+            <label for="extra1">Nombre completo</label>
+            <input id="extra1" name="extra1" class="form-control inset-box-shadow" type="text" value="@user.FullName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="buyerEmail">Email</label>
+            <input id="buyerEmail" name="buyerEmail" class="form-control inset-box-shadow" type="email" value="@user.Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="extra2">Telefono o Celular</label>
+            <input id="extra2" name="extra2" class="form-control inset-box-shadow" type="text" value="@user.Phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="shippingAddress">Direccion</label>
+            <input id="shippingAddress" name="shippingAddress" class="form-control inset-box-shadow" type="text" value="@user.Address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="extra3">Ciudad</label>
+            <input id="extra3" name="extra3" class="form-control inset-box-shadow" type="text" value="@user.Town" autocomplete="off" placeholder="" required>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                        decimal total = 0;
+                    }
+                    @foreach (var item in ((Order)ViewBag.Order).OrderProduct)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@Html.Raw((item.Quantity * @item.Product.Price).ToString("c"))</td>
+                            <td><a href="/App/RemoveProduct/@i"><i class="fas fa-times-circle text-dark"></i></a></td>
+                        </tr>
+
+                        i++;
+                        total = total + (item.Quantity * @item.Product.Price);
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input id="Total" type="hidden" value="@total" />
+                            <strong>@total.ToString("c")</strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button class="btn btn-success btn-block box-shadow" type="submit"><i class="fas fa-dollar-sign"></i> Pagar</button>
+        <a href="/Order/AddProduct" class="btn btn-success btn-block box-shadow"><i class="fas fa-plus-circle"></i> Agregar Producto al Pedido</a>
+        <a href="/App/Menu" class="btn btn-secondary btn-block box-shadow">Volver al menu</a>
+    </form>
+</div>
+
+<script>
+    var place;
+
+    function initialize() {
+        var options = {
+            types: ["(cities)"]
+        };
+
+        var input = document.getElementById("extra3");
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+        autocomplete.setComponentRestrictions(
+            { 'country': ['co'] });
+
+        google.maps.event.addListener(autocomplete, "place_changed", function () {
+            place = $("#extra3").val();
+        });
+    }
+    google.maps.event.addDomListener(window, "load", initialize);
+
+    $("#extra3").blur(function () {
+        if ($("#extra3").val() != place) {
+            $("#extra3").val("");
+        }
+    });
+</script>

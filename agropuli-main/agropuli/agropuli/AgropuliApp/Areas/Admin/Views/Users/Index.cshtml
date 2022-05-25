@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AgropuliApp.Models.User>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Usuarios</h4>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Cédula de ciudadanía</th>
+                    <th>Nombre completo</th>
+                    <th>Teléfono/Celular</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Username</td>
+                        <td>@item.NationalId</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Phone</td>
+                        <td class="text-nowrap">
+                            @Html.ActionLink("Detalle", "Edit", new { username = item.Username.Trim() }, new { @class = "btn btn-success box-shadow" })
+                            @Html.ActionLink("Pedidos", "GetOrdersByUser", "Orders", new { username = item.Username.Trim() }, new { @class = "btn btn-success box-shadow" })
+                            @Html.ActionLink("Contador", "Accountant", "App", new { username = item.Username.Trim() }, new { @class = "btn btn-success box-shadow" })
+                            @Html.ActionLink("Referidos", "Referrals", "App", new { username = item.Username.Trim() }, new { @class = "btn btn-success box-shadow" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (Session["rolid"].ToString() == "1")
+    {
+        @Html.ActionLink("Crear usuario", "Create", null, new { @class = "btn btn-success btn-block box-shadow" })
+        <a class="btn btn-secondary btn-block box-shadow" href="/Admin/App/Menu">Volver al menu</a>
+    }
+    else
+    {
+        <a class="btn btn-secondary btn-block box-shadow" href="/App/Menu">Volver al menu</a>
+    }
+
+</div>

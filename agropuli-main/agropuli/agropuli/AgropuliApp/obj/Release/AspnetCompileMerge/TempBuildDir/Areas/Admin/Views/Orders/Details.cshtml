@@ -1,0 +1,132 @@
+﻿@model AgropuliApp.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Pedido No. @Model.Reference</h4>
+
+<div class="container">
+    <div class="form-group">
+        <label>Creado</label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Created)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Nombre completo
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Customer)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            @Html.DisplayNameFor(model => model.Email)
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Email)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Telefono o Celular
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Phone)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Direccion
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Address)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Ciudad
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.City)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            @Html.DisplayNameFor(model => model.Total)
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.Total)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Fecha del pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PaymentDateTime)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Referencia de pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuReference)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Transacción de pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuTransaction)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Estado de pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuState)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Codigo de respuesta
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuResponseCode)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Tipo de pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuPaymentType)</span>
+    </div>
+    <div class="form-group">
+        <label>
+            Metodo de pago
+        </label>
+        <span class="form-control" readonly>@Html.DisplayFor(model => model.PayuPaymentMethod)</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 0;
+                    decimal total = 0;
+                }
+                @foreach (var item in Model.OrderProduct)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@Html.Raw((item.Quantity * @item.Product.Price).ToString("c"))</td>
+                    </tr>
+
+                    i++;
+                    total = total + (item.Quantity * @item.Product.Price);
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input id="Total" type="hidden" value="@total" />
+                        <strong>@total.ToString("c")</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/Admin/Orders/GetOrdersByUser/@Model.Username" class="btn btn-secondary btn-block">Regresar</a>
+</div>

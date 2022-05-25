@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="485d44dacae54a83a89c644d5bc022b9" Name="Diagram1">
+        <EntityTypeShape EntityType="AgropuliModel.OrderProduct" Width="1.5" PointX="7.5" PointY="1.5" />
+        <EntityTypeShape EntityType="AgropuliModel.Role" Width="1.5" PointX="7.75" PointY="5" />
+        <EntityTypeShape EntityType="AgropuliModel.Product" Width="1.5" PointX="3" PointY="5" />
+        <AssociationConnector Association="AgropuliModel.FK_OrderProduct_Product" />
+        <EntityTypeShape EntityType="AgropuliModel.Category" Width="1.5" PointX="0.75" PointY="5.5" />
+        <AssociationConnector Association="AgropuliModel.FK_Product_Category" />
+        <EntityTypeShape EntityType="AgropuliModel.Service" Width="1.5" PointX="7.625" PointY="7.875" />
+        <EntityTypeShape EntityType="AgropuliModel.ServiceCategory" Width="1.5" PointX="5.375" PointY="8.125" />
+        <AssociationConnector Association="AgropuliModel.FK_Service_Category" />
+        <EntityTypeShape EntityType="AgropuliModel.Order" Width="1.5" PointX="12.25" PointY="3.625" />
+        <AssociationConnector Association="AgropuliModel.FK_OrderProduct_Order" />
+        <EntityTypeShape EntityType="AgropuliModel.Log" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AgropuliModel.Referral" Width="1.5" PointX="12.25" PointY="9.75" />
+        <EntityTypeShape EntityType="AgropuliModel.Favor" Width="1.5" PointX="12.25" PointY="0.75" />
+        <EntityTypeShape EntityType="AgropuliModel.User" Width="1.5" PointX="10" PointY="3.625" />
+        <AssociationConnector Association="AgropuliModel.FK_Favor_User" />
+        <AssociationConnector Association="AgropuliModel.FK_Order_User" />
+        <AssociationConnector Association="AgropuliModel.FK_Referral_User" />
+        <AssociationConnector Association="AgropuliModel.FK_User_Role" />
+        <EntityTypeShape EntityType="AgropuliModel.Crop" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AgropuliModel.Job" Width="1.5" PointX="13.375" PointY="15.25" />
+        <EntityTypeShape EntityType="AgropuliModel.Pest" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AgropuliModel.Vehicle" Width="1.5" PointX="13.375" PointY="12.875" />
+        <EntityTypeShape EntityType="AgropuliModel.WorkWithUs" Width="1.5" PointX="15.625" PointY="4.375" />
+        <AssociationConnector Association="AgropuliModel.FK_WorkWithUs_Job" />
+        <AssociationConnector Association="AgropuliModel.FK_WorkWithUs_User" />
+        <AssociationConnector Association="AgropuliModel.FK_WorkWithUs_Vehicle" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

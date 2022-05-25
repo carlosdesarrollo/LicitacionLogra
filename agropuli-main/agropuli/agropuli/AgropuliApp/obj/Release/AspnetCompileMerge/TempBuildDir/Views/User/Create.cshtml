@@ -1,0 +1,132 @@
+﻿@model AgropuliApp.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/_Shared/_LoginLayout.cshtml";
+}
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <h1 class="text-white text-center">AGROPULI</h1>
+            <hr />
+            <h4 class="text-white text-center">CREAR MI CUENTA</h4>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Usuario", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "50", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Contraseña", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "50", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Cédula de ciudadanía", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.NationalId, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "12", required = "required" } })
+                @Html.ValidationMessageFor(model => model.NationalId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Nombre completo", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100", required = "required" } })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Email", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100", type = "email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Dirección", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "200" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Municipio", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Town, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100", autocomplete = "off", placeholder = "" } })
+                @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vereda, htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Vereda, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.Vereda, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Teléfono/Celular", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "12" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Finca", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Farm, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.Farm, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Cultivo principal", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Crop, new { htmlAttributes = new { @class = "form-control inset-box-shadow", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.Crop, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Ubicación", htmlAttributes: new { @class = "control-label text-white" })
+
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control inset-box-shadow" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" value="Crear cuenta" class="btn btn-success btn-block box-shadow" />
+            <a class="btn btn-secondary btn-block box-shadow" href="/App/Index">Regresar</a>
+        }
+    </div>
+
+    <script>
+        var place;
+
+        function initialize() {
+            var options = {
+                types: ["(cities)"]
+            };
+
+            var input = document.getElementById("Town");
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+            autocomplete.setComponentRestrictions(
+                { 'country': ['co'] });
+
+            google.maps.event.addListener(autocomplete, "place_changed", function () {
+                place = $("#Town").val();
+            });
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+
+        $("#Town").blur(function () {
+            if ($("#Town").val() != place) {
+                $("#Town").val("");
+            }
+        });
+    </script>

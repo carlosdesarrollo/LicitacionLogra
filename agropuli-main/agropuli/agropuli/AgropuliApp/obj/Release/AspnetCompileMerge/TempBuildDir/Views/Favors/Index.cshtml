@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AgropuliApp.Models.Favor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Mis AgroEnvios</h4>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th>
+                        Creado
+                    </th>
+                    <th>
+                        Descripción
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.ActionLink("Crear AgroEnvio", "Create", null, new { @class = "btn btn-success btn-block box-shadow" })
+    <a class="btn btn-secondary btn-block box-shadow" href="/App/Menu">Volver al menu</a>
+</div>

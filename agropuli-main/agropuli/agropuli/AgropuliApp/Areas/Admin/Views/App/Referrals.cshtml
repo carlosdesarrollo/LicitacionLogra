@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AgropuliApp.Models.Referral>
+
+@{
+    ViewBag.Title = "Referrals";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Mis Referidos</h4>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th class="text-nowrap">
+                        Creado
+                    </th>
+                    <th>
+                        Cédula de ciudadanía
+                    </th>
+                    <th>
+                        Nombre completo
+                    </th>
+                    <th>
+                        Teléfono/Celular
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-nowrap">
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NationalId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn btn-secondary btn-block box-shadow" href="/Admin/Users/Index">Regresar</a>
+</div>

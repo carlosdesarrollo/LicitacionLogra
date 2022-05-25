@@ -1,0 +1,72 @@
+﻿@model AgropuliApp.Models.WorkWithUs
+
+@{
+    ViewBag.Title = "Trabaja Con Nosotros";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Trabaja con nosotros</h4>
+
+<div class="container">
+    <p>
+        Si prestas los servicios de labores en el cultivo de palma, o quieres ser parte de nuestro equipo freelance como vendedor, teletrabajo, ingeniero agrónomo, técnico agrícola, transportador en moto o vehículo, o si eres un almacén de insumos agrícolas veterinario, llena tus datos en el formulario, inmediatamente te llamaremos. SI TIENES ALGO QUE VENDER (cosechas agricolas) O ALGO QUE COMPRAR (cosechas agricolas e insumos o herramientas agricolas) PUBLICAREMOS TU OFERTA Y/O DEMANDA en las ciudades o municipios donde estes!
+    </p>
+    <p>
+        A continuacion danos una descripción de lo que puedes hacer por nosotros, que tipo de labor realizas, si manejas vehiculo y si tienes titulo técnico o profesional.
+    </p>
+
+    @using (Html.BeginForm("WorkWithUs", "App", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.Username)
+
+        <div class="form-group">
+            @Html.Label("Descripción", htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control inset-box-shadow", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Labor", htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.DropDownList("JobId", null, "Seleccione...", htmlAttributes: new { @class = "form-control inset-box-shadow", required = "required" })
+                @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Vehiculo", htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.DropDownList("VehicleId", null, "Seleccione...", htmlAttributes: new { @class = "form-control inset-box-shadow" })
+                @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Tiene titulo técnico o profesional", htmlAttributes: new { @class = "control-label" })
+            <div>
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsTechnician)
+                    @Html.ValidationMessageFor(model => model.IsTechnician, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Si posees titulo técnico o profesional, por favor adjunta tu hoja de vida.</p>
+            <input type="file" name="uploadedFile" />
+        </div>
+
+        <div class="form-group">
+            <a src="~/resumes/@Path.GetFileName(ViewBag.Resume)"></a>
+        </div>
+
+        <input type="submit" value="Guardar Solicitud" class="btn btn-success btn-block box-shadow" />
+        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary btn-block box-shadow" })
+    }
+</div>

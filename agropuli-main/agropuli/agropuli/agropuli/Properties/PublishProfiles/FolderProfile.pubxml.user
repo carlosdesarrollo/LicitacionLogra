@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Projects\andrescode\Detallitos.co\agropuli\agropuli\bin\Release\netcoreapp2.2\publish\</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE83t/938YU2bU7BQ9AN7GAAAAAACAAAAAAAQZgAAAAEAACAAAAC/Zq//oZ495Fu4qDq6/+CrLWQiKYTmoU75FQo1+09Q5AAAAAAOgAAAAAIAACAAAABtxZfuhiM7bu+qNjB9WO8VNM9Xgm8GTflRXy2WLClWDiAAAAC6s/gHMufAUJ5OIDIduldxT7YPiSFpUaYd+jir7haJnkAAAACSASEa75LNqfY8ZZOsv4Xh7yiMec4E9oxungvDMMIiCsDvQSJ8cGqkKEff4XAdt5/WkmTA+jCqWWHCavwAhA2Q</EncryptedPassword>
+  </PropertyGroup>
+</Project>

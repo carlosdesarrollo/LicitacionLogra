@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AgropuliApp.Models.Product>
+
+@{
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/_Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="title text-white text-center d-block box-shadow">Productos</h4>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered bg-white box-shadow">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    @*<th>
+                        Descripción
+                    </th>*@
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Activo
+                    </th>
+                    <th>
+                        Categoría
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Name)
+                        </td>
+                        <td class="text-nowrap">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-success box-shadow" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.ActionLink("Crear producto", "Create", null, new { @class = "btn btn-success btn-block box-shadow" })
+    <a class="btn btn-secondary btn-block box-shadow" href="/Admin/App/Menu">Volver al menu</a>
+</div>

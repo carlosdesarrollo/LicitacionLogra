@@ -1,0 +1,148 @@
+﻿@model IEnumerable<AgropuliApp.Models.Appointment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NationalId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vereda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GPS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Administrator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Variety)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CallDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryCrop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestAppointment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignTechnician)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextAppointment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NationalId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vereda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GPS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Administrator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Variety)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CallDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryCrop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestAppointment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignTechnician)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NextAppointment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

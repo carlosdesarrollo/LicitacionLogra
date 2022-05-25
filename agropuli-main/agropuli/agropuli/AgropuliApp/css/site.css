@@ -1,0 +1,13 @@
+﻿html, body {
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+
+main{
+    display:flex;
+    height:100%;
+    align-content:center;
+    align-items:center;
+    justify-content:center;
+}

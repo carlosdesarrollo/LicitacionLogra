@@ -1,0 +1,185 @@
+﻿@model AgropuliApp.Models.Appointment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/_Shared/_AppLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NationalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NationalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vereda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vereda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Farm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Administrator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Crop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Crop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Variety)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variety)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CallDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryCrop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryCrop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestAppointment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestAppointment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignTechnician)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignTechnician)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextAppointment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextAppointment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
